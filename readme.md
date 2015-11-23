@@ -4,9 +4,11 @@
 
 Choose one of the following three exercises:
 
-- [Movie Browser](https://github.com/ga-dc/movie-browser)
-- [Spotify.me](https://github.com/ga-dc/spotify-me)
-- [Infinite Giphy](https://github.com/ga-dc/infinite-giphy)
+They are listed in order of difficulty
+
+1. [Movie Browser](https://github.com/ga-dc/movie-browser)
+2. [Spotify.me](https://github.com/ga-dc/spotify-me)
+3. [Infinite Giphy](https://github.com/ga-dc/infinite-giphy)
 
 [Create an issue](https://github.com/ga-dc/thanksgiving-homework/issues/new?title=Part%20One) on this
 repository with a link to your fork on GitHub.
