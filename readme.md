@@ -22,7 +22,7 @@ Do [nodeschool](http://nodeschool.io/)'s Express tutorial - https://github.com/a
 [Create an issue](https://github.com/ga-dc/thanksgiving-homework/issues/new?title=Part%20Two) on this
 repository with a brief reflection on your opinion and understanding of node and express.
 
-Things worth considering:
+Please include answers to the following questions in your issue:
 
 - How is Express related to the MEAN stack?
 - How does Express differ from a framework like Sinatra?
