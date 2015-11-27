@@ -9,12 +9,12 @@ $(document).ready(function() {
     var movie_name = $("#movie_name").val();
     // clears input field
     $("#movie_name").val("");
-    movieSearch(movie_name);
+    moviesSearch(movie_name);
   }) // ends on method
 
 
   // Search for Movie using movie_name
-  function movieSearch(movie_name) {
+  function moviesSearch(movie_name) {
     var url = "http://www.omdbapi.com/?s=" + movie_name;
     $.ajax({
       url: url,
@@ -22,7 +22,7 @@ $(document).ready(function() {
       dataType: "json"
     })
     .done(function(response){
-      movieFound(movie_name, response);
+      moviesFound(movie_name, response);
     })
     .fail(function(){
     }).always(function(){
@@ -30,17 +30,17 @@ $(document).ready(function() {
   } // Ends findMovie
 
 
-  // 
-  function movieFound(movie_name, response) {
-    $("#movie_options").show();
+  // Use movie_name and ajax response object to list out movie titles
+  function moviesFound(movie_name, response) {
+    $("#movie_options").append("<option>Movies matching " + "\"" + movie_name + "\"" + "</option>");
     var all_movies = response.Search;
-    console.log(all_movies);
+    for (var i=0; i < all_movies.length; i++) {
+      $("#movie_options").append("<option><a href='google.com'>" + all_movies[i].Title +   "</a></option>");
+    }
+    $("#movie_options").show(); 
   }
       // lists the movie titles from the response object as option elements in the select element created earlier
-      for (var i=0; i < all_movies.length; i++) {
-        $("#movie_options").append("<option><a href='google.com'>" + all_movies[i].Title +   "</a></option>");
-        var movie_name = $("#movie_name").val();
-      }
+
 
       // Shows options
 
