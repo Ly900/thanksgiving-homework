@@ -11,7 +11,7 @@ $(document).ready(function() {
       dataType: "json"
     }).done(function(response){
       console.log(response);
-      
+      $("body").append("<div>" + response.Search[0].Title + "</div>");
     }).fail(function(){
         console.log("Ajax request fails!")
     }).always(function(){
