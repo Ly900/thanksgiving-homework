@@ -35,17 +35,31 @@ $(document).ready(function() {
     $("#movie_options").append("<option>Movies matching " + "\"" + movie_name + "\"" + "</option>");
     var all_movies = response.Search;
     for (var i=0; i < all_movies.length; i++) {
-      $("#movie_options").append("<option><a href='google.com'>" + all_movies[i].Title +   "</a></option>");
+      var movie = all_movies[i];
+      $("#movie_options").append("<option value='" + movie.imdbID + "'>" + movie.Title + "</option>");
     }
-    $("#movie_options").show(); 
+    $("#movie_options").show();
   }
-      // lists the movie titles from the response object as option elements in the select element created earlier
 
 
-      // Shows options
-
-
-
+  // Shows the movie's title and poster picture
+  function showInfo(movie_imbdID){
+    console.log(movie.imbdID);
+    var url = "http://www.omdbapi.com/?t=" + movie_imbdID;
+    $("#movie_options").on("change", function() {
+      $.ajax({
+        url: url,
+        type: "get",
+        dataType: "json"
+      })
+      .done(function(response){
+        console.log(movie_name)
+      })
+      .fail(function(){
+      }).always(function(){
+      }) //ends ajax request
+    }) //ends on method
+  } // ends showInfo
 
 
 }) //ends ready method
