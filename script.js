@@ -4,18 +4,22 @@ $(document).ready(function() {
     evt.preventDefault();
     var movie_name = $("#movie_name").val();
     var url = "http://www.omdbapi.com/?s=" + movie_name;
-    console.log(url);
     $.ajax({
       url: url,
       type: "get",
       dataType: "json"
     }).done(function(response){
-      console.log(response);
-      $("body").append("<div>" + response.Search[0].Title + "</div>");
+      var all_movies = response.Search;
+
+      $("#movie_results_form").append(
+        "<select id='movie_options'><option>Movies matching " + "\"" + movie_name + "\"..." + "</option></select>")
+
+      for (var i=0; i < all_movies.length; i++) {
+        $("#movie_options").append("<option>" + all_movies[i].Title + "</option>");
+      }
+
     }).fail(function(){
-        console.log("Ajax request fails!")
     }).always(function(){
-        console.log("Ajax request sent.")
     })
 
   }) // ends on method
