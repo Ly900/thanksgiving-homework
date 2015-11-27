@@ -1,7 +1,9 @@
 $(document).ready(function() {
+  $("#movie_options").hide();
 
   $("#submit_button").on("click", function(evt) {
     evt.preventDefault();
+    $("#movie_options").show();
     var movie_name = $("#movie_name").val();
     var url = "http://www.omdbapi.com/?s=" + movie_name;
     $.ajax({
@@ -9,14 +11,21 @@ $(document).ready(function() {
       type: "get",
       dataType: "json"
     }).done(function(response){
+      var movie_name = $("#movie_name").val();
       var all_movies = response.Search;
+      console.log(movie_name)
+      console.log(url)
 
-      $("#movie_results_form").append(
-        "<select id='movie_options'><option>Movies matching " + "\"" + movie_name + "\"..." + "</option></select>")
-
+      // lists the movie titles from the response object as option elements in the select element created earlier
       for (var i=0; i < all_movies.length; i++) {
-        $("#movie_options").append("<option>" + all_movies[i].Title + "</option>");
+        $("#movie_options").append("<option><a href='google.com'>" + all_movies[i].Title +   "</a></option>");
+        var movie_name = $("#movie_name").val();
       }
+
+      // clears input field
+      $("#movie_name").val("");
+
+
 
     }).fail(function(){
     }).always(function(){
