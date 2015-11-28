@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
   $("#movie_options").hide();
-
+  $("#movie_poster_div").hide();
 
   // Search Form and Button:
   $("#submit_button").on("click", function(evt) {
@@ -48,19 +48,21 @@ $(document).ready(function() {
     $("#movie_options").on("change", function() {
       console.log(this.value);
       var url = "http://www.omdbapi.com/?i=" + this.value;
-      console.log(url);
+      $.ajax({
+        url: url,
+        type: "get",
+        dataType: "json"
+      })
+      .done(function(response){
+        $("#movie_title_div").html(response.Title);
+        $("#movie_poster_div img").attr("src", response.Poster);
+        $("#movie_poster_div").show();
+      })
+      .fail(function(){
+      }).always(function(){ 
+      }) //ends ajax request
     }) //ends on method
-      // $.ajax({
-      //   url: url,
-      //   type: "get",
-      //   dataType: "json"
-      // })
-      // .done(function(response){
-      //   console.log(this);
-      // })
-      // .fail(function(){
-      // }).always(function(){
-      // }) //ends ajax request
+
 
   } // ends showInfo
 
