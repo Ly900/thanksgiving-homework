@@ -9,12 +9,12 @@ $(document).ready(function() {
     var movie_name = $("#movie_name").val();
     // clears input field
     $("#movie_name").val("");
-    moviesSearch(movie_name);
+    movieSearch(movie_name);
   }) // ends on method
 
 
   // Search for Movie using movie_name
-  function moviesSearch(movie_name) {
+  function movieSearch(movie_name) {
     var url = "http://www.omdbapi.com/?s=" + movie_name;
     $.ajax({
       url: url,
@@ -39,26 +39,29 @@ $(document).ready(function() {
       $("#movie_options").append("<option value='" + movie.imdbID + "'>" + movie.Title + "</option>");
     }
     $("#movie_options").show();
+    showInfo();
   }
 
 
   // Shows the movie's title and poster picture
-  function showInfo(movie_imbdID){
-    console.log(movie.imbdID);
-    var url = "http://www.omdbapi.com/?t=" + movie_imbdID;
+  function showInfo(movie_name, response){
     $("#movie_options").on("change", function() {
-      $.ajax({
-        url: url,
-        type: "get",
-        dataType: "json"
-      })
-      .done(function(response){
-        console.log(movie_name)
-      })
-      .fail(function(){
-      }).always(function(){
-      }) //ends ajax request
+      console.log(this.value);
+      var url = "http://www.omdbapi.com/?i=" + this.value;
+      console.log(url);
     }) //ends on method
+      // $.ajax({
+      //   url: url,
+      //   type: "get",
+      //   dataType: "json"
+      // })
+      // .done(function(response){
+      //   console.log(this);
+      // })
+      // .fail(function(){
+      // }).always(function(){
+      // }) //ends ajax request
+
   } // ends showInfo
 
 
