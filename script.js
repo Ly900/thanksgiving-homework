@@ -10,7 +10,6 @@ $(document).ready(function() {
     // clears input field
     $("#movie_name").val("");
     $("h1#movie_title, #movie_poster_div").hide();
-
     movieSearch(movie_name);
   }) // ends on method
 
@@ -56,7 +55,7 @@ $(document).ready(function() {
       })
       .done(function(response){
         $("#movie_title_div").html(response.Title);
-        $("#movie_poster_div img").attr("src", response.Poster);
+        $("#movie_poster_div img").attr({"src": response.Poster, alt: "Poster of " + response.Title});
         $("h1#movie_title, #movie_poster_div").show();
       })
       .fail(function(){
